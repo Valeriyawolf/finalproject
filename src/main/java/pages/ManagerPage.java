@@ -1,6 +1,7 @@
 package pages;
 
 import helpers.ParentClass;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -18,5 +19,10 @@ public class ManagerPage extends ParentClass {
     @FindBy(className = "//button[@class='btn btn-lg tab btn-primary']")
     private WebElement customersButton;
 
+    public ManagerPage (WebDriver driver) {
+        super(driver);
+    }
+
 }
+
 

@@ -18,7 +18,7 @@ public class AddCustPage extends ParentClass {
     @FindBy(className = "btn btn-default")
     private WebElement addCustomerButton;
 
-    public void addCust (WebDriver driver) {
+    public  AddCustPage (WebDriver driver) {
        super(driver);
    }
 

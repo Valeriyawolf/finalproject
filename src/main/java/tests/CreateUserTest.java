@@ -9,7 +9,7 @@ public class CreateUserTest extends BaseTest {
     @Test
     public void createNewUser () {
         AddCustPage addCustPage = new AddCustPage(driver);
-        addCustPage.addCust();
+        addCustPage.addNewCust();
 }
 
 }
