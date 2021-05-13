@@ -11,7 +11,7 @@ public class CreateUserNegativeTest extends BaseTest {
     @Ignore
     public void createNewUserNegative (){
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login();
+        loginPage.bankManagerLogin();
         ManagerPage managerPage = new ManagerPage(driver);
         managerPage.addCustMain();
         ManagerAddCustPage managerAddCustPage = new ManagerAddCustPage(driver);

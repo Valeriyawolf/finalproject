@@ -1,19 +1,15 @@
 package tests;
 
 import helpers.BaseTest;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.ManagerAddCustPage;
-import pages.LoginPage;
-import pages.ManagerListPage;
-import pages.ManagerPage;
+import pages.*;
 
 public class CreateUserPositiveTest extends BaseTest {
 
     @Test
     public void createNewUser () {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login();
+        loginPage.bankManagerLogin();
 
         ManagerPage managerPage = new ManagerPage(driver);
         managerPage.addCustMain();
@@ -26,6 +22,13 @@ public class CreateUserPositiveTest extends BaseTest {
         ManagerListPage managerListPage =new ManagerListPage(driver);
         managerListPage.setSearchCustomer();
         managerListPage.searchCustomerByFirstName();
+        managerListPage.homeButtonClick();
+
+        loginPage.customerLogin();
+
+        AccountPage accountPage =new AccountPage(driver);
+        accountPage.checkTextOpenAccount();
+
 
       }
 

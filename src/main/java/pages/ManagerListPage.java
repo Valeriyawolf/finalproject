@@ -16,6 +16,9 @@ public class ManagerListPage extends ParentClass {
     @FindBy(css = "td[class='ng-binding']")
     private WebElement firstNameField;
 
+    @FindBy(css = "button[ng-click='home()']")
+    private WebElement homeButton;
+
 
     public ManagerListPage(WebDriver driver) {
         super(driver);
@@ -32,5 +35,10 @@ public class ManagerListPage extends ParentClass {
         String resultText = firstNameField.getText();
         Assert.assertEquals(resultText,"Ivan");
 
+    }
+
+    public void homeButtonClick() {
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        homeButton.click();
     }
 }
