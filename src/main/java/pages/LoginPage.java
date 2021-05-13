@@ -5,15 +5,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.concurrent.TimeUnit;
+
 public class LoginPage extends ParentClass {
 
     @FindBy(className = "btn home")
     private WebElement homeButton;
 
-    @FindBy(xpath = "//div[@class='center'][1]/button[@class='btn btn-primary btn-lg']")
+    @FindBy(css = "button[ng-click='customer()']")
     private WebElement customerLoginButton;
 
-    @FindBy(xpath = "//div[@class='center'][2]/button[@class='btn btn-primary btn-lg']")
+    @FindBy(css= "button[ng-click='manager()']")
     private WebElement bankManagerLoginButton;
 
     public LoginPage(WebDriver driver) {
@@ -21,6 +23,7 @@ public class LoginPage extends ParentClass {
     }
 
     public void login() {
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         bankManagerLoginButton.click();
     }
 }

@@ -1,18 +1,19 @@
 package tests;
 
 import helpers.BaseTest;
-import helpers.BaseTestThree;
-import helpers.BaseTestTwo;
 import org.testng.annotations.Test;
-import pages.AddCustPage;
+import pages.ManagerAddCustPage;
+import pages.LoginPage;
 
-public class CreateUserTest extends BaseTestThree {
+public class CreateUserTest extends BaseTest {
 
     @Test
     public void createNewUser () {
-        AddCustPage addCustPage = new AddCustPage(driver);
-        addCustPage.addNewCust();
-}
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login();
+        ManagerAddCustPage managerAddCustPage = new ManagerAddCustPage(driver);
+        managerAddCustPage.addNewCust();
+      }
 
 }
 

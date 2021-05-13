@@ -5,24 +5,29 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class AddCustPage extends ParentClass {
-    @FindBy(xpath = "//div[@class='form-group'][1]/input[@class='form-control ng-pristine ng-invalid ng-invalid-required ng-touched']")
+import java.util.concurrent.TimeUnit;
+
+public class ManagerAddCustPage extends ParentClass {
+
+    @FindBy(css = "input[ng-model='fName']")
     private WebElement firstNameField;
 
-    @FindBy(xpath = "//div[@class='form-group'][2]/input[@class='form-control ng-pristine ng-invalid ng-invalid-required ng-touched']")
+    @FindBy(css = "input[ng-model='lName']")
     private WebElement lastNameField;
 
-    @FindBy(xpath = "//div[@class='form-group'][3]/input[@class='form-control ng-pristine ng-invalid ng-invalid-required ng-touched']")
+    @FindBy(css = "input[ng-model='postCd']")
     private WebElement postCodeField;
 
     @FindBy(className = "btn btn-default")
     private WebElement addCustomerButton;
 
-    public  AddCustPage (WebDriver driver) {
+    public ManagerAddCustPage(WebDriver driver) {
        super(driver);
    }
 
     public void addNewCust() {
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
         firstNameField.sendKeys("Ivan");
         lastNameField.sendKeys("Ivanov");
         postCodeField.sendKeys("10001");

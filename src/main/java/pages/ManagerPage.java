@@ -10,16 +10,17 @@ public class ManagerPage extends ParentClass {
     @FindBy(className = "btn home")
     private WebElement homeButton;
 
-    @FindBy(xpath = "//button[@class='btn btn-lg tab'][1]")
+    @FindBy(css = "button[ng-click='addCust()']")
     private WebElement addCustomerButton;
 
-    @FindBy(xpath = "//button[@class='btn btn-lg tab btn-primary']")
+    @FindBy(css = "button[ng-click='openAccount()']")
     private WebElement openAccountButton;
 
-    @FindBy(className = "//button[@class='btn btn-lg tab btn-primary']")
+    @FindBy(css = "button[ng-click='showCust()']")
     private WebElement customersButton;
 
-    public ManagerPage (WebDriver driver) {
+    public ManagerPage
+            (WebDriver driver) {
         super(driver);
     }
 
