@@ -24,9 +24,13 @@ public class ManagerAddCustPage extends ParentClass {
     @FindBy(css = "button[type='submit']")
     private WebElement addCustomerButton;
 
+    @FindBy(css = "button[ng-click='showCust()']")
+    private WebElement customersButton;
+
+
     public ManagerAddCustPage(WebDriver driver) {
-       super(driver);
-   }
+        super(driver);
+    }
 
     public void addNewCust() {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -36,10 +40,21 @@ public class ManagerAddCustPage extends ParentClass {
         postCodeField.sendKeys("10001");
         addCustomerButton.click();
     }
-    public void closePopUp(){
+
+    public void closePopUp() {
         Alert alt = driver.switchTo().alert();
         alt.accept();
+    }
 
+    public void customersButtonClick(){
+        customersButton.click();
+
+
+    }
+
+    public void addNewCustNegative() {
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        addCustomerButton.click();
     }
 }
 
