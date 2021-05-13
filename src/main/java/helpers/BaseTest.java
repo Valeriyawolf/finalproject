@@ -19,10 +19,10 @@ public abstract class BaseTest {
             driver.get("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login");
         }
 
-        @AfterMethod
-        public void endTest() {
-            driver.quit();
+        //@AfterMethod
+        //public void endTest() {
+          //  driver.quit();
 
-        }
+        //}
     }
 

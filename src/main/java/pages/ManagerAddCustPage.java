@@ -1,8 +1,11 @@
 package pages;
 
 import helpers.ParentClass;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.concurrent.TimeUnit;
@@ -18,7 +21,7 @@ public class ManagerAddCustPage extends ParentClass {
     @FindBy(css = "input[ng-model='postCd']")
     private WebElement postCodeField;
 
-    @FindBy(className = "btn btn-default")
+    @FindBy(css = "button[type='submit']")
     private WebElement addCustomerButton;
 
     public ManagerAddCustPage(WebDriver driver) {
@@ -32,6 +35,11 @@ public class ManagerAddCustPage extends ParentClass {
         lastNameField.sendKeys("Ivanov");
         postCodeField.sendKeys("10001");
         addCustomerButton.click();
+    }
+    public void closePopUp(){
+        Alert alt = driver.switchTo().alert();
+        alt.accept();
+
     }
 }
 
