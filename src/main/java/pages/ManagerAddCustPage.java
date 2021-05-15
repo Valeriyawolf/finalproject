@@ -1,10 +1,7 @@
 package pages;
 
 import helpers.ParentClass;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
@@ -26,6 +23,9 @@ public class ManagerAddCustPage extends ParentClass {
 
     @FindBy(css = "button[ng-click='showCust()']")
     private WebElement customersButton;
+
+    @FindBy(css = "button[ng-class='btnClass2']")
+    private WebElement openAccountButton;
 
 
     public ManagerAddCustPage(WebDriver driver) {
@@ -52,9 +52,16 @@ public class ManagerAddCustPage extends ParentClass {
 
     }
 
+    public void clickAccountButton(){
+        openAccountButton.click();
+
+    }
+
+
     public void addNewCustNegative() {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         addCustomerButton.click();
+
     }
 }
 
