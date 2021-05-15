@@ -4,9 +4,9 @@ import helpers.BaseTest;
 import org.testng.annotations.Test;
 import pages.*;
 
-public class CreateUserAccount extends BaseTest {
+public class CheckStartingBalance extends BaseTest {
     @Test
-    public void createNewUserAndOpenAccount() {
+    public void checkStartingBalance() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.bankManagerLogin();
 
@@ -20,12 +20,11 @@ public class CreateUserAccount extends BaseTest {
 
         OpenAccountPage openAccountPage =new OpenAccountPage(driver);
         openAccountPage.openAccount();
-        openAccountPage.customersButtonClick();
+        openAccountPage.homeButtonclick();
 
-        ManagerListPage managerListPage = new ManagerListPage(driver);
-        managerListPage.setSearchAccount();
-        managerListPage.searchAccountById();
-
+        loginPage.customerLogin();
+        AccountPage accountPage = new AccountPage(driver);
+        accountPage.checkStartingBalance();
 
     }
 }

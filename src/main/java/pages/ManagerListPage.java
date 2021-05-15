@@ -19,6 +19,9 @@ public class ManagerListPage extends ParentClass {
     @FindBy(css = "button[ng-click='home()']")
     private WebElement homeButton;
 
+    @FindBy(css = "span[class='ng-binding ng-scope']")
+    private WebElement searchAccountNumberField;
+
 
     public ManagerListPage(WebDriver driver) {
         super(driver);
@@ -40,5 +43,17 @@ public class ManagerListPage extends ParentClass {
     public void homeButtonClick() {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         homeButton.click();
+    }
+
+    public void setSearchAccount() {
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        searchCustomerField.sendKeys("1016");
+    }
+
+    public void searchAccountById() {
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        String resultText2 = searchAccountNumberField.getText();
+        //Assert.assertEquals(resultText2,"1016");
+
     }
 }

@@ -31,15 +31,19 @@ public class OpenAccountPage extends ParentClass {
     @FindBy(css = "button[ng-class='btnClass3']")
     private WebElement customersButton;
 
-    public OpenAccountPage (WebDriver driver) {
+    @FindBy(css = "button[ng-click='home()']")
+    private WebElement homeButton;
+
+    public OpenAccountPage(WebDriver driver) {
         super(driver);
     }
 
-    public void openAccount (){
+    public void openAccount() {
         customerNameField.click();
         ivanIvanovCustomerName.click();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         openAccountButton.click();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         dollarCurrency.click();
         processButton.click();
         Alert alt = driver.switchTo().alert();
@@ -47,4 +51,11 @@ public class OpenAccountPage extends ParentClass {
 
     }
 
+    public void customersButtonClick() {
+        customersButton.click();
+    }
+
+    public void homeButtonclick () {
+        homeButton.click();
+    }
 }

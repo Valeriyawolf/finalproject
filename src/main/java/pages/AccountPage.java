@@ -14,6 +14,10 @@ public class AccountPage extends ParentClass {
     @FindBy(css = "span[ng-show='noAccount']")
     private WebElement textOpenAccount;
 
+    @FindBy(xpath = "//strong[@class='ng-binding'][2]")
+    private WebElement balance;
+
+
     public AccountPage(WebDriver driver) {
         super(driver);
     }
@@ -22,4 +26,10 @@ public class AccountPage extends ParentClass {
         String resultTextOpenAccount = textOpenAccount.getText();
         Assert.assertEquals(resultTextOpenAccount,"Please open an account with us.");
 }
+    public void checkStartingBalance(){
+        String resultStartingBalance = balance.getText();
+        Assert.assertEquals(resultStartingBalance,"0");
+    }
+
+
 }

@@ -17,6 +17,8 @@ public class CreateUserPositiveTest extends BaseTest {
         ManagerAddCustPage managerAddCustPage = new ManagerAddCustPage(driver);
         managerAddCustPage.addNewCust();
         managerAddCustPage.closePopUp();
+
+
         managerAddCustPage.customersButtonClick();
 
         ManagerListPage managerListPage =new ManagerListPage(driver);
