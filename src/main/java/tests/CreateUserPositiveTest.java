@@ -8,6 +8,7 @@ public class CreateUserPositiveTest extends BaseTest {
 
     @Test
     public void createNewUser () {
+        //create user
         LoginPage loginPage = new LoginPage(driver);
         loginPage.bankManagerLogin();
 
@@ -18,7 +19,7 @@ public class CreateUserPositiveTest extends BaseTest {
         managerAddCustPage.addNewCust();
         managerAddCustPage.closePopUp();
 
-
+        //check that user was created
         managerAddCustPage.customersButtonClick();
 
         ManagerListPage managerListPage =new ManagerListPage(driver);
@@ -26,11 +27,12 @@ public class CreateUserPositiveTest extends BaseTest {
         managerListPage.searchCustomerByFirstName();
         managerListPage.homeButtonClick();
 
+        //login by user
         loginPage.customerLogin();
 
+        //check that user ia not able to do any transactions
         AccountPage accountPage =new AccountPage(driver);
         accountPage.checkTextOpenAccount();
-
 
       }
 

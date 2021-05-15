@@ -6,7 +6,8 @@ import pages.*;
 
 public class CreateUserAccount extends BaseTest {
     @Test
-    public void createNewUserAndOpenAccount() {
+    public void createUserAndOpenAccount() {
+        //create user
         LoginPage loginPage = new LoginPage(driver);
         loginPage.bankManagerLogin();
 
@@ -16,15 +17,24 @@ public class CreateUserAccount extends BaseTest {
         ManagerAddCustPage managerAddCustPage = new ManagerAddCustPage(driver);
         managerAddCustPage.addNewCust();
         managerAddCustPage.closePopUp();
+        //add an account
         managerAddCustPage.clickAccountButton();
 
         OpenAccountPage openAccountPage =new OpenAccountPage(driver);
         openAccountPage.openAccount();
+        //check if account number was added
         openAccountPage.customersButtonClick();
 
         ManagerListPage managerListPage = new ManagerListPage(driver);
         managerListPage.setSearchAccount();
         managerListPage.searchAccountById();
+
+        //check starting balance
+        openAccountPage.homeButtonclick();
+
+        loginPage.customerLogin();
+        AccountPage accountPage = new AccountPage(driver);
+        accountPage.checkStartingBalance();
 
 
     }
