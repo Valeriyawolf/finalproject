@@ -22,6 +22,9 @@ public class ManagerListPage extends ParentClass {
     @FindBy(css = "span[class='ng-binding ng-scope']")
     private WebElement searchAccountNumberField;
 
+    @FindBy(css = "button[ng-click='deleteCust(cust)']")
+    private WebElement deleteUserButton;
+
 
     public ManagerListPage(WebDriver driver) {
         super(driver);
@@ -56,4 +59,8 @@ public class ManagerListPage extends ParentClass {
         //Assert.assertEquals(resultText2,"1016");
 
     }
+    public void deleteUserButtonClick() {
+        deleteUserButton.click();
+    }
+
 }
