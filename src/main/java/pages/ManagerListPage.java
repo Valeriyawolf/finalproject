@@ -55,8 +55,8 @@ public class ManagerListPage extends ParentClass {
 
     public void searchAccountById() {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        String resultText2 = searchAccountNumberField.getText();
-        //Assert.assertEquals(resultText2,"1016");
+        String resultText = searchAccountNumberField.getText();
+        Assert.assertEquals(resultText,"1016");
 
     }
     public void deleteUserButtonClick() {
