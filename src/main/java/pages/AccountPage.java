@@ -19,7 +19,7 @@ public class AccountPage extends ParentClass {
     private WebElement depositMainButton;
 
     @FindBy(css = "input[ng-model='amount']")
-    private WebElement amountField;
+    private WebElement amountDepositField;
 
     @FindBy(css = "button[type='submit']")
     private WebElement depositSubmitButton;
@@ -30,6 +30,21 @@ public class AccountPage extends ParentClass {
     @FindBy(xpath = "//span[@class='error ng-binding']")
     private WebElement depositSuccessfulMessage;
 
+    @FindBy(css = "button[ng-click='withdrawl()']")
+    private WebElement withdrawnButton;
+
+    @FindBy(css = "input[ng-model='amount']")
+    private WebElement amountWithdrawnField;
+
+    @FindBy(css = "button[type='submit']")
+    private WebElement withdrawnSubmitButton;
+
+    @FindBy(xpath = "//span[@class='error ng-binding']")
+    private WebElement withdrawnErrorMessage;
+
+    @FindBy(xpath = "//span[@class='error ng-binding']")
+    private WebElement withdrawnSuccessMessage;
+
 
     public AccountPage(WebDriver driver) {
         super(driver);
@@ -37,23 +52,54 @@ public class AccountPage extends ParentClass {
 
     public void checkTextOpenAccount() {
         String resultTextOpenAccount = textOpenAccount.getText();
-        Assert.assertEquals(resultTextOpenAccount,"Please open an account with us.");
-}
-    public void checkStartingBalance(){
-        String resultStartingBalance = balance.getText();
-        Assert.assertEquals(resultStartingBalance,"0");
+        Assert.assertEquals(resultTextOpenAccount, "Please open an account with us.");
     }
 
-    public void addDeposit100 (){
+    public void checkStartingBalance() {
+        String resultStartingBalance = balance.getText();
+        Assert.assertEquals(resultStartingBalance, "0");
+    }
+
+    public void checkStartingBalance1() {
+        String resultStartingBalance1 = balance.getText();
+        Assert.assertEquals(resultStartingBalance1, "100");
+    }
+
+    public void checkStartingBalance2() {
+        String resultStartingBalance2 = balance.getText();
+        Assert.assertEquals(resultStartingBalance2, "70");
+    }
+
+    public void addDeposit100() {
         depositMainButton.click();
-        amountField.sendKeys("100");
+        amountDepositField.sendKeys("100");
         depositSubmitButton.click();
         String resultText = depositSuccessfulMessage.getText();
-        Assert.assertEquals(resultText,"Deposit Successful");
+        Assert.assertEquals(resultText, "Deposit Successful");
         transactionsButton.click();
+
 
     }
 
+    public void addWithdrawn200() {
+        withdrawnButton.click();
+        amountWithdrawnField.sendKeys("200");
+        withdrawnSubmitButton.click();
+        String resultText = withdrawnErrorMessage.getText();
+        Assert.assertEquals(resultText, "Transaction Failed. You can not withdraw amount more than the balance.");
 
+    }
 
+    public void addWithdrawn30() {
+        withdrawnButton.click();
+        amountWithdrawnField.sendKeys("30");
+        withdrawnSubmitButton.click();
+        String resultText = withdrawnErrorMessage.getText();
+        Assert.assertEquals(resultText, "Transaction successful");
+
+    }
+
+    public void transactionButtonClick (){
+        transactionsButton.click();
+    }
 }

@@ -29,13 +29,16 @@ public class CreateUserAccount extends BaseTest {
         managerListPage.setSearchAccount();
         managerListPage.searchAccountById();
 
-        //check starting balance
+        //click Home Button
         openAccountPage.homeButtonclick();
 
+        //login by user
         loginPage.customerLogin();
-        AccountPage accountPage = new AccountPage(driver);
+
+
+        //check starting balance
+        AccountPage accountPage =new AccountPage(driver);
         accountPage.checkStartingBalance();
-
-
+        
     }
 }

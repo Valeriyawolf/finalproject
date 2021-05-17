@@ -4,10 +4,12 @@ import helpers.BaseTest;
 import org.testng.annotations.Test;
 import pages.*;
 
+import java.util.concurrent.TimeUnit;
+
 public class CreateTransactions extends BaseTest {
 
     @Test
-    public void addDeposit() {
+    public void addTransactions() {
         //create user
         LoginPage loginPage = new LoginPage(driver);
         loginPage.bankManagerLogin();
@@ -21,7 +23,7 @@ public class CreateTransactions extends BaseTest {
         //add an account
         managerAddCustPage.clickAccountButton();
 
-        OpenAccountPage openAccountPage =new OpenAccountPage(driver);
+        OpenAccountPage openAccountPage = new OpenAccountPage(driver);
         openAccountPage.openAccount();
         //check if account number was added
         openAccountPage.customersButtonClick();
@@ -30,7 +32,7 @@ public class CreateTransactions extends BaseTest {
         managerListPage.setSearchAccount();
         managerListPage.searchAccountById();
 
-        //check starting balance
+        //login
         openAccountPage.homeButtonclick();
 
         loginPage.customerLogin();
@@ -38,8 +40,27 @@ public class CreateTransactions extends BaseTest {
         //create deposit
         accountPage.addDeposit100();
 
-        ListTransactionsPage listTransactionsPage =new ListTransactionsPage(driver);
+
+        ListTransactionsPage listTransactionsPage = new ListTransactionsPage(driver);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         listTransactionsPage.checkFirstTransaction();
+        listTransactionsPage.backButtonClick();
+
+        //check starting balance1
+        accountPage.checkStartingBalance1();
+        accountPage.addWithdrawn200();
+        accountPage.transactionButtonClick();
+        listTransactionsPage.backButtonClick();
+
+        //check starting balance2
+        accountPage.checkStartingBalance1();
+        accountPage.addWithdrawn30();
+        accountPage.checkStartingBalance2();
+        accountPage.transactionButtonClick();
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        listTransactionsPage.checkSecondTransaction();
+        listTransactionsPage.backButtonClick();
+
 
     }
 }

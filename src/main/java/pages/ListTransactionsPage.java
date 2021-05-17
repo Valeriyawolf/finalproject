@@ -28,6 +28,9 @@ public class ListTransactionsPage extends ParentClass {
     @FindBy(xpath = "//tr[@id='anchor1']/td[@class='ng-binding'][3]")
     private WebElement transactionTypeSecondTransaction;
 
+    @FindBy(css = "button[ng-click='back()']")
+    private WebElement backButton;
+
 
     public ListTransactionsPage(WebDriver driver) {
         super(driver);
@@ -39,6 +42,19 @@ public class ListTransactionsPage extends ParentClass {
 
         String resultText2 = transactionTypeFirstTransaction.getText();
         Assert.assertEquals(resultText2,"Credit");
+
+    }
+
+    public void checkSecondTransaction () {
+        String resultText = amountSecondTransaction.getText();
+        Assert.assertEquals(resultText,"30");
+
+        String resultText2 = transactionTypeSecondTransaction.getText();
+        Assert.assertEquals(resultText2,"Debit");
+
+    }
+    public void backButtonClick () {
+        backButton.click();
     }
 
 
