@@ -4,6 +4,7 @@ import helpers.ParentClass;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 import java.util.concurrent.TimeUnit;
 
@@ -46,23 +47,41 @@ public class ManagerAddCustPage extends ParentClass {
         alt.accept();
     }
 
-    public void customersButtonClick(){
+    public void customersButtonClick() {
         customersButton.click();
 
 
     }
 
-    public void clickAccountButton(){
+    public void clickAccountButton() {
         openAccountButton.click();
 
     }
 
-
-    public void addNewCustNegative() {
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    public void addNewCustomerNegativeTestOne() {
         addCustomerButton.click();
+        String resultText = firstNameField.getText();
+        Assert.assertEquals(resultText, "");
+
+    }
+
+    public void addNewCustomerNegativeTestTwo() {
+        firstNameField.sendKeys("Ivan");
+        addCustomerButton.click();
+        String resultText = lastNameField.getText();
+        Assert.assertEquals(resultText, "");
+
+    }
+
+    public void addNewCustomerNegativeTestThree() {
+        lastNameField.sendKeys("Ivanov");
+        addCustomerButton.click();
+        String resultText = postCodeField.getText();
+        Assert.assertEquals(resultText, "");
 
     }
 }
+
+
 
 

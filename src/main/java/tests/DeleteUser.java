@@ -29,5 +29,6 @@ public class DeleteUser extends BaseTest {
         managerListPage.setSearchCustomer();
         managerListPage.searchCustomerByFirstName();
         managerListPage.deleteUserButtonClick();
+
     }
 }

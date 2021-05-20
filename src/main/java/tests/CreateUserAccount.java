@@ -39,6 +39,6 @@ public class CreateUserAccount extends BaseTest {
         //check starting balance
         AccountPage accountPage =new AccountPage(driver);
         accountPage.checkStartingBalance();
-        
+
     }
 }

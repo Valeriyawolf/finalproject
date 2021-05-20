@@ -9,8 +9,8 @@ import org.testng.Assert;
 
 public class ListTransactionsPage extends ParentClass {
 
-    @FindBy(xpath = "//tr[@id='anchor0']/td[@class='ng-binding'][1]")
-    private WebElement dateTimeFirstTransaction;
+    //@FindBy(xpath = "//tr[@id='anchor0']/td[@class='ng-binding'][1]")
+    //private WebElement dateTimeFirstTransaction;
 
     @FindBy(xpath = "//tr[@id='anchor0']/td[@class='ng-binding'][2]")
     private WebElement amountFirstTransaction;
@@ -19,8 +19,8 @@ public class ListTransactionsPage extends ParentClass {
     private WebElement transactionTypeFirstTransaction;
 
 
-    @FindBy(xpath = "//tr[@id='anchor1']/td[@class='ng-binding'][1]")
-    private WebElement dateTimeSecondTransaction;
+   // @FindBy(xpath = "//tr[@id='anchor1']/td[@class='ng-binding'][1]")
+   // private WebElement dateTimeSecondTransaction;
 
     @FindBy(xpath = "//tr[@id='anchor1']/td[@class='ng-binding'][2]")
     private WebElement amountSecondTransaction;
